@@ -72,5 +72,6 @@ SELECT `nomPersonne` FROM `personne` WHERE `nomPersonne` LIKE 'ma%';
 ### Utilisez une requête imbriquée pour changer de lieu de travail de « Martin Christopher » : il passe de « La ludo » à « Ludido »
 
 ```sql
-UPDATE `ludotheque` SET `nom` = 'ludido' WHERE `ludotheque`.`id_ludotheque` = ( SELECT `id_ludotheque` FROM `personne` WHERE `id_personne` = 2 );
+UPDATE `ludotheque` SET `nom` = 'Ludido' WHERE `ludotheque`.`id_ludotheque` = ( SELECT `id_ludotheque` FROM `personne` WHERE `id_personne` = 2 );
 ```
+
