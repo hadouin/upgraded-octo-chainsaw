@@ -23,3 +23,23 @@ SELECT * FROM `jouet` ORDER BY `jouet`.`designation` ASC
 ```
 
 ![Alt text](images/brave_VR3KZrQQon.png)
+
+
+### Comptez le nombre de personnes mineures
+
+```sql
+SELECT COUNT(age)
+FROM personne
+WHERE age<18;
+```
+
+### Ajoutez dans la table theme un nouveau thème appelé « jeux de sociétés »
+
+```sql
+INSERT INTO `theme` (`id_theme`, `nom`) VALUES (NULL, 'jeux de sociétés')
+```
+![Alt text](images/brave_qglke2AMt2.png)
+
+### Martin Pascale change d’orientation professionnelle et quitte son travail actuel. Supprimez-la de la table personne. Est-ce qu’il y a un changement dans la table specialite_personne ? Expliquez.
+
+```sql
