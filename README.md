@@ -16,6 +16,10 @@ FOREIGN KEY (id_specialite) REFERENCES specialite(id_specialite);
 
 ![Alt text](images/brave_jZxCM6XDTD.png)
 
-### Listez par ordre alphabétique sur la designation et sans redondance tous les jouets.
+### Listez par ordre alphabétique sur la designation et sans redondance tous les jouets
 
-``
+```sql
+SELECT * FROM `jouet` ORDER BY `jouet`.`designation` ASC
+```
+
+![Alt text](images/brave_VR3KZrQQon.png)
