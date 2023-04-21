@@ -62,3 +62,6 @@ UPDATE `personne` SET `email` = 'mad@dupond.name' WHERE `personne`.`id_personne`
 
 ### Listez toutes les personnes dont le prénom commence par « ma »
 
+```sql
+SELECT `nomPersonne` FROM `personne` WHERE `nomPersonne` LIKE 'ma%';
+```
