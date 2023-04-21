@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>upgraded-octo-chainsaw</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="upgraded-octo-chainsaw">upgraded-octo-chainsaw</h1>
+<h2 id="import-de-la-bdd">Import de la BDD</h2>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_tyeonrENUb.png" alt="Alt text"></p>
+<h2 id="sql">SQL</h2>
+<h3 id="1-ajoutez-une-contrainte-qui-permet-de-dire-que-la-colonne-id_specialite-de-la-table-specialite_personne-est-une-clé-secondaire-et-correspond-à-la-clé-primaire-id_specialite-de-la-table-specialite">1 Ajoutez une contrainte qui permet de dire que la colonne id_specialite de la table specialite_personne est une clé secondaire et correspond à la clé primaire id_specialite de la table specialite</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> specialite_personne
+<span class="hljs-keyword">ADD</span> <span class="hljs-keyword">CONSTRAINT</span> FK_PersonOrder
+<span class="hljs-keyword">FOREIGN</span> KEY (id_specialite) <span class="hljs-keyword">REFERENCES</span> specialite(id_specialite);
+</code></pre>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_jZxCM6XDTD.png" alt="Alt text"></p>
+<h3 id="listez-par-ordre-alphabétique-sur-la-designation-et-sans-redondance-tous-les-jouets">Listez par ordre alphabétique sur la designation et sans redondance tous les jouets</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> `jouet` <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> `jouet`.`designation` <span class="hljs-keyword">ASC</span>
+</code></pre>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_VR3KZrQQon.png" alt="Alt text"></p>
+<h3 id="comptez-le-nombre-de-personnes-mineures">Comptez le nombre de personnes mineures</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> nombre_mineurs <span class="hljs-keyword">FROM</span> personne <span class="hljs-keyword">WHERE</span> DATEDIFF(<span class="hljs-built_in">CURRENT_DATE</span>, dateNaissance) <span class="hljs-operator">&lt;</span> <span class="hljs-number">6570</span>;
+
+</code></pre>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_slZGxdRjpw.png" alt="Alt text"></p>
+<h3 id="ajoutez-dans-la-table-theme-un-nouveau-thème-appelé--jeux-de-sociétés-">Ajoutez dans la table theme un nouveau thème appelé « jeux de sociétés »</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `theme` (`id_theme`, `nom`) <span class="hljs-keyword">VALUES</span> (<span class="hljs-keyword">NULL</span>, <span class="hljs-string">&#x27;jeux de sociétés&#x27;</span>)
+</code></pre>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_qglke2AMt2.png" alt="Alt text"></p>
+<h3 id="martin-pascale-change-dorientation-professionnelle-et-quitte-son-travail-actuel-supprimez-la-de-la-table-personne-est-ce-quil-y-a-un-changement-dans-la-table-specialite_personne--expliquez">Martin Pascale change d’orientation professionnelle et quitte son travail actuel. Supprimez-la de la table personne. Est-ce qu’il y a un changement dans la table specialite_personne ? Expliquez</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> personne <span class="hljs-keyword">WHERE</span> `personne`.`id_personne` <span class="hljs-operator">=</span> <span class="hljs-number">4</span>
+</code></pre>
+<p>Oui la table specialite_personne change
+car la contrainte de foreign key fait que la reference precedente
+Martin Pascale (id=4) est indisponible donc c'est supprimé</p>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_fJcadJAR1x.png" alt="Alt text"></p>
+<h3 id="modifiez-ladresse-mail-de-marie-antoinette-dupond-de--madupondname--à--maddupondname-">Modifiez l’adresse mail de Marie-Antoinette Dupond de « <a href="mailto:ma@dupond.name">ma@dupond.name</a> » à « <a href="mailto:mad@dupond.name">mad@dupond.name</a> »</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">UPDATE</span> `personne` <span class="hljs-keyword">SET</span> `email` <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;mad@dupond.name&#x27;</span> <span class="hljs-keyword">WHERE</span> `personne`.`id_personne` <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+</code></pre>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_tNsLj6eRxX.png" alt="Alt text"></p>
+<h3 id="listez-toutes-les-personnes-dont-le-prénom-commence-par--ma-">Listez toutes les personnes dont le prénom commence par « ma »</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> `nomPersonne` <span class="hljs-keyword">FROM</span> `personne` <span class="hljs-keyword">WHERE</span> `nomPersonne` <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;ma%&#x27;</span>;
+</code></pre>
+<p><img src="file:///c:\Users\Hadouin\VSCodeProjects\upgraded-octo-chainsaw\images\brave_slZGxdRjpw.png" alt="Alt text"></p>
+<h3 id="utilisez-une-requête-imbriquée-pour-changer-de-lieu-de-travail-de--martin-christopher---il-passe-de--la-ludo--à--ludido-">Utilisez une requête imbriquée pour changer de lieu de travail de « Martin Christopher » : il passe de « La ludo » à « Ludido »</h3>
+
+        
+        
+    </body>
+    </html>
