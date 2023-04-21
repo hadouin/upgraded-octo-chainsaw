@@ -24,7 +24,6 @@ SELECT * FROM `jouet` ORDER BY `jouet`.`designation` ASC
 
 ![Alt text](images/brave_VR3KZrQQon.png)
 
-
 ### Comptez le nombre de personnes mineures
 
 ```sql
@@ -38,8 +37,28 @@ WHERE age<18;
 ```sql
 INSERT INTO `theme` (`id_theme`, `nom`) VALUES (NULL, 'jeux de sociétés')
 ```
+
 ![Alt text](images/brave_qglke2AMt2.png)
 
-### Martin Pascale change d’orientation professionnelle et quitte son travail actuel. Supprimez-la de la table personne. Est-ce qu’il y a un changement dans la table specialite_personne ? Expliquez.
+### Martin Pascale change d’orientation professionnelle et quitte son travail actuel. Supprimez-la de la table personne. Est-ce qu’il y a un changement dans la table specialite_personne ? Expliquez
 
 ```sql
+DELETE FROM personne WHERE `personne`.`id_personne` = 4
+```
+
+Oui la table specialite_personne change
+car la contrainte de foreign key fait que la reference precedente
+Martin Pascale (id=4) est indisponible donc c'est supprimé
+
+![Alt text](images/brave_fJcadJAR1x.png)
+
+### Modifiez l’adresse mail de Marie-Antoinette Dupond de « ma@dupond.name » à « mad@dupond.name »
+
+```sql
+UPDATE `personne` SET `email` = 'mad@dupond.name' WHERE `personne`.`id_personne` = 1;
+```
+
+![Alt text](images/brave_tNsLj6eRxX.png)
+
+### Listez toutes les personnes dont le prénom commence par « ma »
+
